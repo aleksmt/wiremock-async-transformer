@@ -6,22 +6,20 @@
 
     <groupId>ru.github.mrcerbycsy</groupId>
     <artifactId>wiremock-async-transformer</artifactId>
-    <version>0.1</version>
-    <packaging>pom</packaging>
+    <version>0.0.1</version>
 
-    <name>${project.artifactId}</name>
-    <description>A WireMock transformer to perform async response.</description>
+    <description>A WireMock transformer to perform async request.</description>
 
     <properties>
         <build.version>${project.version}</build.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.build.assembled.dir>${project.build.directory}/assembled</project.build.assembled.dir>
-        <project.build.assets.dir>${project.build.directory}/assets</project.build.assets.dir>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
     <build>
+        <sourceDirectory>${project.basedir}/src</sourceDirectory>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -32,7 +30,7 @@
                     <target>${maven.compiler.target}</target>
                     <compilerArgument>-Werror</compilerArgument>
                     <excludes>
-                        <exclude>**/ru/github/alexm/wiremock/Tester.java</exclude>
+                        <exclude>**/ru/github/mrcerbycsy/wiremock/DebugRunner.java</exclude>
                     </excludes>
                 </configuration>
             </plugin>
@@ -83,7 +81,6 @@
                 <version>3.1.1</version>
                 <configuration>
                     <outputDirectory>${project.build.assembled.dir}</outputDirectory>
-                    <skip>true</skip>
                 </configuration>
                 <executions>
                     <execution>
@@ -107,6 +104,7 @@
                 <artifactId>maven-clean-plugin</artifactId>
                 <version>3.1.0</version>
             </plugin>
+
         </plugins>
     </build>
 
