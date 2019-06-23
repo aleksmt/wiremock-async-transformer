@@ -15,20 +15,23 @@ This transformer creates separated thread, which waiting for the given interval 
 and then performs a HTTP request. 
 
 ```text
-    +-----------+  request           +------------+
-    |           | -(1)-------------> |            |
-    |  System1  |                    |  WireMock  |
-    |           | <------------(2)-- |            |
-    +-----------+  mocked response   +------------+
-                                            |
-                                  [after n sec. delay]
-                                            |
-    +-----------+                          (3)  <---- here the magic happens
-    |           |                           |
-    |  System2  |  <------------------------+
-    |           |       async request
-    +-----------+
 
+      initiator
+    ┌─────────────┐  requests mock     ┌────────────┐
+    │             │ ─(1)─────────────> │            │
+    │  Service 1  │                    │  WireMock  │
+    │             │ <────────────(2)── │            │
+    └─────────────┘  mocked response   └────────────┘
+                                             │
+                                   [after n sec. delay]
+                                             │
+    ┌─────────────┐                         (3)  <┈┈┈┈ here the magic happens
+    │             │                          │
+    │  Service 2  │ <════════════════════════╛
+    │             │  async request from wm
+    └─────────────┘
+      waits for a
+      request
 
 ```
 e.g. delay = 5 sec., then the request (3) will be performed after the 5 seconds after response (2)
