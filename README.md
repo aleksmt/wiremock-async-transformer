@@ -23,7 +23,7 @@ and then performs a HTTP request.
                                             |
                                   [after n sec. delay]
                                             |
-    +-----------+                          (3)
+    +-----------+                          (3)  <---- here the magic happens
     |           |                           |
     |  System2  |  <------------------------+
     |           |       async request
