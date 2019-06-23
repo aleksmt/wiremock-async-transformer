@@ -3,8 +3,15 @@ Make asynchronous request after the response. When just the response simply not 
 
 ## Intro
 The reason why the extension exists: sometimes you need to perform async request after 
-the response, e.g. to invoke remote webhook. This transformer allows you to do that by creating a
-separate thread, which is waiting for the given interval of time and then performs a request.
+the response, e.g. to invoke remote webhook. 
+
+Typically, it's not required during the automated tests. But if you want to mock something 
+on the pre-production system very "quick and dirty", the solution might be helpful. 
+So you don't have to "hold" some additional runtime, async request "from the box" doing
+what you want.
+
+This transformer creates separated thread, which waiting for the given interval of time 
+and then performs a HTTP request. 
 
 ```text
     +-----------+  request           +------------+
@@ -28,6 +35,7 @@ e.g. delay = 5 sec., then the request (3) will be performed after the 5 seconds 
 ## Adding to the WireMock
 
 ## Arguments
+
 
 
 ## Example json mapping with the extension enabled
