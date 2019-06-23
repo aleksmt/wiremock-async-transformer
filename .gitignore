@@ -1,8 +1,9 @@
 # Compiled class file
 *.class
 
-# Log file
+# Logs of any kind
 *.log
+**/*.log
 
 # BlueJ files
 *.ctxt
@@ -21,3 +22,13 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+
+# Java compilation results
+**/target/
+
