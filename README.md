@@ -46,13 +46,13 @@ There is many possible ways to add the extension to your WireMock server, e.g.:
 
 Transformer name: `async-request`, use this name in "transformers" json section of the mapping
 
-| Argument Key  | Type    | Description (Request)                                             |  
-|---------------|---------|-------------------------------------------------------------------|  
-| url           | String  | URL, starting from "http://", incl. full path                     |  
-| body          | String  | String representation of the async request body                   |  
-| method        | String  | HTTP method: GET, POST, PUT, DELETE, PATCH, etc.                  |  
-| delay         | Integer | Wait for the given amount of milliseconds before the request      |  
-| headers       | Object  | Headers represented by the json object as a pairs of a key-values |   
+| Argument Key  | Type    | Description (Request)                                             | Required          | 
+|---------------|---------|-------------------------------------------------------------------|-------------------|
+| url           | String  | URL, starting from "http://", incl. full path                     | True              |
+| body          | String  | String representation of the async request body                   | False             |
+| method        | String  | HTTP method: GET, POST, PUT, DELETE, PATCH, etc.                  | True              |  
+| delay         | Integer | Wait for the given amount of milliseconds before the request      | False, default 5s |
+| headers       | Object  | Headers represented by the json object as a pairs of a key-values | False             |
   
 
 
